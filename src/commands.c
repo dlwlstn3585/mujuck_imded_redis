@@ -11,4 +11,3 @@
 #else
 #include "commands.def"
 #endif
-#
