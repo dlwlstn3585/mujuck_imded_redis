@@ -68,7 +68,7 @@ helloacl.so: helloacl.xo
 redis_bst_module.xo: ../redismodule.h redis_bst_module.c
 	$(CC) -I. $(CFLAGS) $(SHOBJ_CFLAGS) -fPIC -c redis_bst_module.c -o redis_bst_module.xo
 
-redis_bst_module.so: redis_bst_module.xo
+redis_bst_module.so: redis_bst_module.xo ../bst.o
 	$(LD) -o $@ $^ $(SHOBJ_LDFLAGS) $(LIBS) -lc
 
 clean:
