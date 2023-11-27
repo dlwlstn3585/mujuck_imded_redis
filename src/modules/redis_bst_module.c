@@ -69,7 +69,7 @@ int BSSetCommand(RedisModuleCtx* ctx, RedisModuleString** argv, int argc) {
     return REDISMODULE_OK;
 }
 
-int RedisModule_OnLoad(RedisModuleCtx* ctx, RedisModuleString** argv, int argc) {
+int RedisModule_OnLoad(RedisModuleCtx* ctx) {
     if (RedisModule_Init(ctx, "bst", 1, REDISMODULE_APIVER_1) == REDISMODULE_ERR) return REDISMODULE_ERR;
 
     if (RedisModule_CreateCommand(ctx, "bst.search", BSTSearchCommand, "readonly", 1, 1, 1) == REDISMODULE_ERR) return REDISMODULE_ERR;
