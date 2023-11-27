@@ -1,5 +1,5 @@
 #include "../redismodule.h"
-#include "bst.h"
+#include "../bst.h"
 
 Node* root = NULL;  
 
