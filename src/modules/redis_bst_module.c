@@ -1,4 +1,4 @@
-#include "redismodule.h"
+#include "../src/redismodule.h"
 #include "bst.h"
 
 Node* root = NULL;  
