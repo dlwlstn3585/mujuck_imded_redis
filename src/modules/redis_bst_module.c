@@ -72,8 +72,10 @@ int BSSetCommand(RedisModuleCtx* ctx, RedisModuleString** argv, int argc) {
 int RedisModule_OnLoad(RedisModuleCtx* ctx) {
     if (RedisModule_Init(ctx, "bst", 1, REDISMODULE_APIVER_1) == REDISMODULE_ERR) return REDISMODULE_ERR;
 
-    if (RedisModule_CreateCommand(ctx, "bst.search", BSTSearchCommand, "readonly", 1, 1, 1) == REDISMODULE_ERR) return REDISMODULE_ERR;
-    if (RedisModule_CreateCommand(ctx, "bst.insert", BSTInsertCommand, "write", 1, 1, 1) == REDISMODULE_ERR) return REDISMODULE_ERR;
+    if (RedisModule_CreateCommand(ctx, "bsget", BSTSearchCommand, "readonly", 1, 1, 1) == REDISMODULE_ERR) return REDISMODULE_ERR;
+    if (RedisModule_CreateCommand(ctx, "BSGET", BSTSearchCommand, "readonly", 1, 1, 1) == REDISMODULE_ERR) return REDISMODULE_ERR;
+    if (RedisModule_CreateCommand(ctx, "bsset", BSTInsertCommand, "write", 1, 1, 1) == REDISMODULE_ERR) return REDISMODULE_ERR;
+    if (RedisModule_CreateCommand(ctx, "BSSET", BSTInsertCommand, "write", 1, 1, 1) == REDISMODULE_ERR) return REDISMODULE_ERR;
 
     return REDISMODULE_OK;
 }
