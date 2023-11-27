@@ -20,7 +20,7 @@ endif
 
 .SUFFIXES: .c .so .xo .o
 
-all: helloworld.so hellotype.so helloblock.so hellocluster.so hellotimer.so hellodict.so hellohook.so helloacl.so
+all: helloworld.so hellotype.so helloblock.so hellocluster.so hellotimer.so hellodict.so hellohook.so helloacl.so redis_bst_module.so
 
 .c.xo:
 	$(CC) -I. $(CFLAGS) $(SHOBJ_CFLAGS) -fPIC -c $< -o $@
@@ -63,6 +63,12 @@ hellohook.so: hellohook.xo
 helloacl.xo: ../redismodule.h
 
 helloacl.so: helloacl.xo
+	$(LD) -o $@ $^ $(SHOBJ_LDFLAGS) $(LIBS) -lc
+
+redis_bst_module.xo: ../redismodule.h redis_bst_module.c
+	$(CC) -I. $(CFLAGS) $(SHOBJ_CFLAGS) -fPIC -c redis_bst_module.c -o redis_bst_module.xo
+
+redis_bst_module.so: redis_bst_module.xo
 	$(LD) -o $@ $^ $(SHOBJ_LDFLAGS) $(LIBS) -lc
 
 clean:
